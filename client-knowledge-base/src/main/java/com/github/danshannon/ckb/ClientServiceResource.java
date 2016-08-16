@@ -13,26 +13,25 @@ import com.github.danshannon.ckb.model.Client;
 @Path("/client")
 @Produces(MediaType.APPLICATION_JSON)
 public class ClientServiceResource {
-	private ClientDAO dao;
+	private DAO<Client, String> dao;
 	
-	public ClientDAO getDao() {
+	public DAO<Client, String> getDao() {
 		return dao;
 	}
 
-	public void setDao(ClientDAO dao) {
+	public void setDao(DAO<Client, String> dao) {
 		this.dao = dao;
 	}
 
 	@GET
 	@Timed
 	public Client getClient(@QueryParam("id") String id) {
-		return new Client(id,"John Doe");
-		// TODO return dao.getClient(id);
+		return dao.get(id);
 	}
 	
 	@POST
 	@Timed
 	public Client postClient(Client client) {
-		return dao.createClient(client);
+		return dao.create(client);
 	}
 }

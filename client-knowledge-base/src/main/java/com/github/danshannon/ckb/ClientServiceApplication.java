@@ -1,8 +1,5 @@
 package com.github.danshannon.ckb;
 
-import com.commercehub.dropwizard.mongo.ManagedMongoClient;
-import com.mongodb.client.MongoDatabase;
-
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -26,14 +23,15 @@ public class ClientServiceApplication extends Application<ClientServiceConfigura
 
 	@Override
 	public void run(ClientServiceConfiguration configuration, Environment environment) throws Exception {
+		final ClientDAOManagedImpl dao = new ClientDAOManagedImpl();
+		environment.lifecycle().manage(dao);
+
 		final ClientServiceResource resource = new ClientServiceResource();
+		resource.setDao(dao);
 		environment.jersey().register(resource);
 		
-		ManagedMongoClient mongoClient = configuration.getMongo().build();
-        environment.lifecycle().manage(mongoClient);
-        MongoDatabase db = mongoClient.getDatabase(configuration.getMongo().getDbName());
-		
 	}
+	
 	
 	
 }

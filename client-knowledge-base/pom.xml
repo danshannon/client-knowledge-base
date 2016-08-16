@@ -6,10 +6,11 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Client Knowledgebase microservice</name>
 	<repositories>
-  <repository>
-    <id>jcenter</id>
-    <url>http://jcenter.bintray.com</url>
-  </repository>	</repositories>
+		<repository>
+			<id>jcenter</id>
+			<url>http://jcenter.bintray.com</url>
+		</repository>
+	</repositories>
 	<build>
 		<plugins>
 			<plugin>
@@ -56,12 +57,14 @@
 			<artifactId>dropwizard-core</artifactId>
 			<version>${dropwizard.version}</version>
 		</dependency>
-<dependency>
-  <groupId>com.commercehub.dropwizard</groupId>
-  <artifactId>dropwizard-mongo</artifactId>
-  <version>5.0.0</version>
-</dependency>	</dependencies>
+		<dependency>
+			<groupId>org.mapdb</groupId>
+			<artifactId>mapdb</artifactId>
+			<version>${mapdb.version}</version>
+		</dependency>
+	</dependencies>
 	<properties>
 		<dropwizard.version>1.0.0</dropwizard.version>
+		<mapdb.version>3.0.1</mapdb.version>
 	</properties>
 </project>
