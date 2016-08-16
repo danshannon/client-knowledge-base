@@ -1,7 +1,6 @@
 package com.github.danshannon.ckb;
 
 import io.dropwizard.Application;
-import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
 public class ClientServiceApplication extends Application<ClientServiceConfiguration>{
@@ -13,12 +12,6 @@ public class ClientServiceApplication extends Application<ClientServiceConfigura
 	@Override
 	public String getName() {
 		return "client-service";
-	}
-
-	@Override
-	public void initialize(Bootstrap<ClientServiceConfiguration> bootstrap) {
-		// TODO Auto-generated method stub
-		super.initialize(bootstrap);
 	}
 
 	@Override

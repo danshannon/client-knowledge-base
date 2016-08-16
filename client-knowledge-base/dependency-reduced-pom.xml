@@ -50,6 +50,7 @@
   </repositories>
   <properties>
     <dropwizard.version>1.0.0</dropwizard.version>
+    <mapdb.version>3.0.1</mapdb.version>
   </properties>
 </project>
 
