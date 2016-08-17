@@ -28,6 +28,9 @@ public class ClientDAOManagedImpl implements DAO<Client, String>, Managed {
 	}
 
 	public Client get(String id) {
+		if (id == null) {
+			return null;
+		}
 		Client client = clients.get(id);
 		return client;
 	}

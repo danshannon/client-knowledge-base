@@ -23,6 +23,8 @@ public class ClientServiceApplication extends Application<ClientServiceConfigura
 		resource.setDao(dao);
 		environment.jersey().register(resource);
 		
+		environment.jersey().register(new ClientServiceExceptionMapper());
+		
 	}
 	
 	

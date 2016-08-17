@@ -1,6 +1,7 @@
 package com.github.danshannon.ckb;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -26,7 +27,11 @@ public class ClientServiceResource {
 	@GET
 	@Timed
 	public Client getClient(@QueryParam("id") String id) {
-		return dao.get(id);
+		Client client = dao.get(id);
+		if (client == null) {
+			throw new NotFoundException("No client found with id = " + id);
+		}
+		return client;
 	}
 	
 	@POST
