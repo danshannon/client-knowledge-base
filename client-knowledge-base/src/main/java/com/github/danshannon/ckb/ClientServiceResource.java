@@ -11,6 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.codahale.metrics.annotation.Timed;
+import com.github.danshannon.ckb.data.ClientDAO;
 import com.github.danshannon.ckb.data.DAO;
 import com.github.danshannon.ckb.data.DataNotFoundException;
 import com.github.danshannon.ckb.data.DataPrivacyException;
@@ -20,27 +21,27 @@ import com.github.danshannon.ckb.model.Client;
 @Path("/client/{id}")
 @Produces(MediaType.APPLICATION_JSON)
 public class ClientServiceResource {
-	private DAO<Client, Long> dao;
-	
+	private ClientDAO dao;
+
 	public DAO<Client, Long> getDao() {
-		return dao;
+		return this.dao;
 	}
 
-	public void setDao(DAO<Client, Long> dao) {
+	public void setDao(final ClientDAO dao) {
 		this.dao = dao;
 	}
 
 	@GET
 	@Timed
-	public Client getClient(@PathParam("id") Long id) {
+	public Client getClient(@PathParam("id") final Long id) {
 		Client client;
 		try {
-			client = dao.get(id);
-		} catch (DataNotFoundException e) {
+			client = this.dao.get(id);
+		} catch (final DataNotFoundException e) {
 			throw new NotFoundException(e);
-		} catch (DataSecurityException e) {
+		} catch (final DataSecurityException e) {
 			throw new ForbiddenException(e);
-		} catch (DataPrivacyException e) {
+		} catch (final DataPrivacyException e) {
 			throw new ForbiddenException(e);
 		}
 		if (client == null) {
@@ -48,16 +49,16 @@ public class ClientServiceResource {
 		}
 		return client;
 	}
-	
+
 	@PUT
 	@Timed
-	public Client updateClient(@PathParam("id") Long id, Client client) {
-		return dao.update(id, client);
+	public Client updateClient(final Client client) {
+		return this.dao.update(client);
 	}
-	
+
 	@DELETE
 	@Timed
-	public Client deleteClient(@PathParam("id") Long id) {
-		return dao.delete(id);
+	public Client deleteClient(@PathParam("id") final Long id) {
+		return this.dao.delete(id);
 	}
 }

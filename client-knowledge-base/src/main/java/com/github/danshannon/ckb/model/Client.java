@@ -3,87 +3,86 @@ package com.github.danshannon.ckb.model;
 import java.util.Calendar;
 
 public class Client {
-	private Long id;
-	private String name;
-	private byte[] logo;
-	private Boolean isActive = Boolean.TRUE;
-	private String address;
-	private String industry;
-	private String website;
-	private Calendar createDate;
-	
+	private Long		id;
+	private String		name;
+	private byte[]		logo;
+	private boolean		active	= Boolean.TRUE;
+	private String		address;
+	private String		industry;
+	private String		website;
+	private Calendar	createDate;
+
 	public Client() {
 		// Required for Jackson serialisation
 	}
-	
-	public Client(Long id, String name) {
+
+	public Client(final Long id, final String name) {
 		this.id = id;
 		this.name = name;
 	}
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
-	public void setId(Long id) {
+	public void setId(final Long id) {
 		this.id = id;
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 
 	public byte[] getLogo() {
-		return logo;
+		return this.logo;
 	}
 
-	public void setLogo(byte[] logo) {
+	public void setLogo(final byte[] logo) {
 		this.logo = logo;
 	}
 
 	public boolean isActive() {
-		return isActive;
+		return this.active;
 	}
 
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
+	public void setActive(final boolean isActive) {
+		this.active = isActive;
 	}
 
 	public String getAddress() {
-		return address;
+		return this.address;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress(final String address) {
 		this.address = address;
 	}
 
 	public String getIndustry() {
-		return industry;
+		return this.industry;
 	}
 
-	public void setIndustry(String industry) {
+	public void setIndustry(final String industry) {
 		this.industry = industry;
 	}
 
 	public String getWebsite() {
-		return website;
+		return this.website;
 	}
 
-	public void setWebsite(String website) {
+	public void setWebsite(final String website) {
 		this.website = website;
 	}
 
 	public Calendar getCreateDate() {
-		return createDate;
+		return this.createDate;
 	}
 
-	public void setCreateDate(Calendar createDate) {
+	public void setCreateDate(final Calendar createDate) {
 		this.createDate = createDate;
 	}
-	
-	
+
 }

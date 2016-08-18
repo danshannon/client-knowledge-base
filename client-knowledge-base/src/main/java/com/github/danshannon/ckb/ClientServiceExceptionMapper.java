@@ -11,9 +11,9 @@ import org.eclipse.jetty.http.HttpStatus;
 
 public class ClientServiceExceptionMapper implements ExceptionMapper<WebApplicationException> {
 
-	public Response toResponse(WebApplicationException e) {
+	public Response toResponse(final WebApplicationException e) {
 		// If not status, set to 500 by default
-		int status = e.getResponse() == null ? 500 : e.getResponse().getStatus();
+		final int status = e.getResponse() == null ? 500 : e.getResponse().getStatus();
 
 		final String message = e.getMessage() == null ? HttpStatus.getMessage(status) : status + ": " + e.getMessage();
 

@@ -12,18 +12,18 @@ import com.github.danshannon.ckb.model.Client;
 public class ClientSerializer implements Serializer<Client> {
 	ObjectMapper mapper = new ObjectMapper();
 
-	public int compare(Client o1, Client o2) {
+	public int compare(final Client o1, final Client o2) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	public Client deserialize(DataInput2 input, int available) throws IOException {
-		return mapper.readValue(input.readLine(), Client.class);
+	public Client deserialize(final DataInput2 input, final int available) throws IOException {
+		return this.mapper.readValue(input.readLine(), Client.class);
 	}
 
-	public void serialize(DataOutput2 output, Client client) throws IOException {
-		output.writeBytes(mapper.writeValueAsString(client));
-		
+	public void serialize(final DataOutput2 output, final Client client) throws IOException {
+		output.writeBytes(this.mapper.writeValueAsString(client));
+
 	}
 
 }

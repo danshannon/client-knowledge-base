@@ -1,13 +1,13 @@
 package com.github.danshannon.ckb.data;
 
-public class DataPrivacyException extends Exception {
+public class DataOperationNotSupportedException extends Exception {
 
 	/**
 	 *
 	 */
 	private static final long serialVersionUID = 1192606517180283728L;
 
-	public DataPrivacyException(final String message) {
+	public DataOperationNotSupportedException(final String message) {
 		// TODO log!
 
 		super(message);
