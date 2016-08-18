@@ -42,27 +42,28 @@ public interface DAO<U, V> {
 	
 	/**
 	 * <p>
-	 * Get paginated list of objects from the data store. The method implementation should guarantee ordering of the object so that pagination is consistent
+	 * Get paginated list of objects from the data store. The method implementation should guarantee ordering of the object so that pagination is consistent.
+	 * </p>
+	 * 
+	 * <p>
+	 * Objects which violate security and/or privacy constraints should not be included in the list
 	 * </p>
 	 * 
 	 * @param page Page number to be returned (1-indexed, i.e. the first element in the list is on page 1, there is no page 0)
-	 * @param perPage Number of objects per page
-	 * @return List of objects Returns objects in a defined order, from <code>((page - 1) * perPage + 1)</code> to <code>(page * perPage)</code>
+	 * @param pageSize Number of objects per page
+	 * @throws DataPagingInstructionException if the request is for page <= 0 or pageSize <=0
+	 * @return List of objects Returns objects in a defined order, from <code>((page - 1) * pageSize + 1)</code> to <code>(page * pageSize)</code>
 	 */
-	public List<U> getPage(Integer page, Integer perPage) throws DataPagingInstructionException;
+	public List<U> getPage(Integer page, Integer pageSize) throws DataPagingInstructionException;
 	
 	/**
 	 * <p>
 	 * Creates a single object
 	 * </p>
 	 * 
-	 * <p>
-	 * Implementations should
-	 * </p>
-	 * 
 	 * @param object
 	 * @throws DataDuplicateException if the object already exists in the store
-	 * @return
+	 * @return Object created including the id (which may itself be created during persistence to the data store)
 	 */
 	public U create(U object) throws DataDuplicateException;
 	public List<U> createAll(List<U> objects);

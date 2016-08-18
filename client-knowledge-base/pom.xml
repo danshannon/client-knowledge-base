@@ -62,9 +62,15 @@
 			<artifactId>mapdb</artifactId>
 			<version>${mapdb.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.squareup.retrofit2</groupId>
+			<artifactId>retrofit</artifactId>
+			<version>${retrofit.version}</version>
+		</dependency>
 	</dependencies>
 	<properties>
 		<dropwizard.version>1.0.0</dropwizard.version>
 		<mapdb.version>3.0.1</mapdb.version>
+		<retrofit.version>2.1.0</retrofit.version>
 	</properties>
 </project>

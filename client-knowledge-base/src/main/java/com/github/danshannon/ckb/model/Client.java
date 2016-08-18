@@ -3,10 +3,10 @@ package com.github.danshannon.ckb.model;
 import java.util.Calendar;
 
 public class Client {
-	private String id;
+	private Long id;
 	private String name;
 	private byte[] logo;
-	private boolean isActive = true;
+	private Boolean isActive = Boolean.TRUE;
 	private String address;
 	private String industry;
 	private String website;
@@ -16,16 +16,16 @@ public class Client {
 		// Required for Jackson serialisation
 	}
 	
-	public Client(String id, String name) {
+	public Client(Long id, String name) {
 		this.id = id;
 		this.name = name;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

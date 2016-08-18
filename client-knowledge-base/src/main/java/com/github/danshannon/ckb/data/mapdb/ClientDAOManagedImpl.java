@@ -8,6 +8,7 @@ import org.mapdb.DBMaker;
 import org.mapdb.Serializer;
 
 import com.github.danshannon.ckb.data.ClientDAO;
+import com.github.danshannon.ckb.data.DataPagingInstructionException;
 import com.github.danshannon.ckb.model.Client;
 
 import io.dropwizard.lifecycle.Managed;
@@ -66,6 +67,41 @@ public class ClientDAOManagedImpl implements ClientDAO, Managed {
 		Client client = clients.get(id);
 		clients.remove(id);
 		return client;
+	}
+
+	public List<Client> findByIds(List<Long> ids) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Client> getPage(Integer page, Integer pageSize) throws DataPagingInstructionException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Client> createAll(List<Client> objects) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Client> updateAll(List<Client> objects) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Client> deleteAll(List<Client> objects) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Client> deleteAllById(List<Long> ids) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Client> findByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.github.danshannon.ckb;
 
+import com.github.danshannon.ckb.data.mapdb.ClientDAOManagedImpl;
+
 import io.dropwizard.Application;
 import io.dropwizard.setup.Environment;
 
@@ -22,6 +24,10 @@ public class ClientServiceApplication extends Application<ClientServiceConfigura
 		final ClientServiceResource resource = new ClientServiceResource();
 		resource.setDao(dao);
 		environment.jersey().register(resource);
+		
+		final ClientCreateServiceResource createResource = new ClientCreateServiceResource();
+		createResource.setDao(dao);
+		environment.jersey().register(createResource);
 		
 		environment.jersey().register(new ClientServiceExceptionMapper());
 		
