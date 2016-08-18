@@ -1,4 +1,4 @@
-package com.github.danshannon.ckb;
+package com.github.danshannon.ckb.data.mapdb;
 
 import java.io.IOException;
 
