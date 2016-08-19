@@ -1,4 +1,4 @@
-package com.github.danshannon.ckb.data;
+package com.github.danshannon.ckb.data.mapdb;
 
 public class DataOperationNotSupportedException extends Exception {
 

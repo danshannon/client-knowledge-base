@@ -9,7 +9,7 @@ import javax.ws.rs.core.Response.Status;
 
 import com.codahale.metrics.annotation.Timed;
 import com.github.danshannon.ckb.data.DAO;
-import com.github.danshannon.ckb.data.DataDuplicateException;
+import com.github.danshannon.ckb.data.mapdb.DataDuplicateException;
 import com.github.danshannon.ckb.model.Client;
 
 @Path("/client")

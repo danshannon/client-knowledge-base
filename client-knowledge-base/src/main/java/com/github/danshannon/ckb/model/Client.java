@@ -3,14 +3,14 @@ package com.github.danshannon.ckb.model;
 import java.util.Calendar;
 
 public class Client {
-	private Long		id;
-	private String		name;
-	private byte[]		logo;
-	private boolean		active	= Boolean.TRUE;
-	private String		address;
-	private String		industry;
-	private String		website;
-	private Calendar	createDate;
+	private Long id;
+	private String name;
+	private byte[] logo;
+	private boolean active = Boolean.TRUE;
+	private String address;
+	private String industry;
+	private String website;
+	private Calendar createDate;
 
 	public Client() {
 		// Required for Jackson serialisation

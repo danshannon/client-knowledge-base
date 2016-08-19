@@ -1,5 +1,6 @@
 package com.github.danshannon.ckb.data.mapdb;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mapdb.DB;
@@ -11,10 +12,14 @@ import com.github.danshannon.ckb.model.Client;
 
 import io.dropwizard.lifecycle.Managed;
 
+/**
+ * @author DShannon
+ *
+ */
 public class ClientDAOManagedImpl implements ClientDAO, Managed {
-	private DB					database;
-	private Map<Long, Client>	clients;
-	private Map<String, Long>	ids;
+	private DB database;
+	private Map<Long, Client> clients;
+	private Map<String, Long> ids;
 
 	public void start() throws Exception {
 		this.database = DBMaker.fileDB("client.db").make();
@@ -57,15 +62,67 @@ public class ClientDAOManagedImpl implements ClientDAO, Managed {
 		return client;
 	}
 
-	public Client update(final Long id, final Client client) {
-		this.clients.put(client.getId(), client);
-		return client;
-	}
-
 	public Client delete(final Long id) {
 		final Client client = this.clients.get(id);
 		this.clients.remove(id);
 		return client;
+	}
+
+	public List<Client> getAll() throws DataOperationNotSupportedException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Client> getPage(Integer page, Integer pageSize)
+			throws DataPagingInstructionException, DataOperationNotSupportedException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Client> createAll(List<Client> objects) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Client update(Client object) throws DataNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Client> updateAll(List<Client> objects) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Client> deleteAll(List<Client> objects) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Client> deleteAllById(List<Long> ids) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void deleteAll() throws DataOperationNotSupportedException {
+		// TODO Auto-generated method stub
+
+	}
+
+	public Client patch(Client object) throws DataNotFoundException, DataSecurityException, DataPrivacyException,
+			DataOperationNotSupportedException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Client> patchAll(List<Client> objects) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Client> findByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

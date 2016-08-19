@@ -13,9 +13,9 @@ import javax.ws.rs.core.MediaType;
 import com.codahale.metrics.annotation.Timed;
 import com.github.danshannon.ckb.data.ClientDAO;
 import com.github.danshannon.ckb.data.DAO;
-import com.github.danshannon.ckb.data.DataNotFoundException;
-import com.github.danshannon.ckb.data.DataPrivacyException;
-import com.github.danshannon.ckb.data.DataSecurityException;
+import com.github.danshannon.ckb.data.mapdb.DataNotFoundException;
+import com.github.danshannon.ckb.data.mapdb.DataPrivacyException;
+import com.github.danshannon.ckb.data.mapdb.DataSecurityException;
 import com.github.danshannon.ckb.model.Client;
 
 @Path("/client/{id}")
@@ -53,12 +53,24 @@ public class ClientServiceResource {
 	@PUT
 	@Timed
 	public Client updateClient(final Client client) {
-		return this.dao.update(client);
+		try {
+			return this.dao.update(client);
+		} catch (final DataNotFoundException e) {
+			throw new NotFoundException(e);
+		}
 	}
 
 	@DELETE
 	@Timed
 	public Client deleteClient(@PathParam("id") final Long id) {
-		return this.dao.delete(id);
+		try {
+			return this.dao.delete(id);
+		} catch (final DataNotFoundException e) {
+			throw new NotFoundException(e);
+		} catch (final DataSecurityException e) {
+			throw new ForbiddenException(e);
+		} catch (final DataPrivacyException e) {
+			throw new ForbiddenException(e);
+		}
 	}
 }
