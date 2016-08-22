@@ -30,12 +30,10 @@ public interface DAO<U, V> {
 	 * @throws DataNotFoundException
 	 *             if there is no object with the given id
 	 * @throws DataSecurityException
-	 *             if the caller does not have access to the object with the
-	 *             given id
+	 *             if the caller does not have access to the object with the given id
 	 * @return The object with the given id
 	 * @throws DataPrivacyException
-	 *             if the caller does not have access to the object because of
-	 *             privacy requirements
+	 *             if the caller does not have access to the object because of privacy requirements
 	 */
 	public U get(final V id) throws DataNotFoundException, DataSecurityException, DataPrivacyException;
 
@@ -45,8 +43,7 @@ public interface DAO<U, V> {
 	 * </p>
 	 *
 	 * <p>
-	 * Objects which cannot be accessed because of privacy or security will not
-	 * be included in the list
+	 * Objects which cannot be accessed because of privacy or security will not be included in the list
 	 * </p>
 	 *
 	 * @return List of all objects in the data store
@@ -57,25 +54,21 @@ public interface DAO<U, V> {
 
 	/**
 	 * <p>
-	 * Get paginated list of objects from the data store. The method
-	 * implementation should guarantee ordering of the object so that pagination
-	 * is consistent.
+	 * Get paginated list of objects from the data store. The method implementation should guarantee ordering of the object so that
+	 * pagination is consistent.
 	 * </p>
 	 *
 	 * <p>
-	 * Objects which violate security and/or privacy constraints should not be
-	 * included in the returned list
+	 * Objects which violate security and/or privacy constraints should not be included in the returned list
 	 * </p>
 	 *
 	 * @param page
-	 *            Page number to be returned (1-indexed, i.e. the first element
-	 *            in the list is on page 1, there is no page 0)
+	 *            Page number to be returned (1-indexed, i.e. the first element in the list is on page 1, there is no page 0)
 	 * @param pageSize
 	 *            Number of objects per page
 	 * @throws DataPagingInstructionException
 	 *             if the request is for page <= 0 or pageSize <=0
-	 * @return List of objects Returns objects in a defined order, from
-	 *         <code>((page - 1) * pageSize + 1)</code> to
+	 * @return List of objects Returns objects in a defined order, from <code>((page - 1) * pageSize + 1)</code> to
 	 *         <code>(page * pageSize)</code>
 	 * @throws DataOperationNotSupportedException
 	 *             if this operation is not supported
@@ -92,15 +85,13 @@ public interface DAO<U, V> {
 	 *            The object to be persisted
 	 * @throws DataDuplicateException
 	 *             if the object already exists in the store
-	 * @return Object created including the id (which may itself be created
-	 *         during persistence to the data store)
+	 * @return Object created including the id (which may itself be created during persistence to the data store)
 	 */
 	public U create(final U object) throws DataDuplicateException;
 
 	/**
 	 * <p>
-	 * Creates all of the objects in the list, in the order that they appear in
-	 * the list
+	 * Creates all of the objects in the list, in the order that they appear in the list
 	 * </p>
 	 *
 	 * @param objects
@@ -111,8 +102,7 @@ public interface DAO<U, V> {
 
 	/**
 	 * <p>
-	 * Update an existing object. The entire object as it exists in the data
-	 * store will be replaced with the one provided.
+	 * Update an existing object. The entire object as it exists in the data store will be replaced with the one provided.
 	 * </p>
 	 *
 	 * @param object
@@ -125,14 +115,13 @@ public interface DAO<U, V> {
 
 	/**
 	 * <p>
-	 * Update a list of existing objects in the data store. The entire object as
-	 * it exists in the data store will be replaced with the one provided.
+	 * Update a list of existing objects in the data store. The entire object as it exists in the data store will be replaced with
+	 * the one provided.
 	 * </p>
 	 *
 	 * <p>
-	 * If an object does not exist in the data store or cannot be updated for
-	 * security or privacy reasons, then it will not be included in the list
-	 * returned.
+	 * If an object does not exist in the data store or cannot be updated for security or privacy reasons, then it will not be
+	 * included in the list returned.
 	 * </p>
 	 *
 	 * @param objects
@@ -164,8 +153,7 @@ public interface DAO<U, V> {
 	 * </p>
 	 *
 	 * <p>
-	 * Objects which could not be successfully deleted for privacy or security
-	 * reasons will not be returned in the return list.
+	 * Objects which could not be successfully deleted for privacy or security reasons will not be returned in the return list.
 	 * </p>
 	 *
 	 * @param objects
@@ -180,8 +168,7 @@ public interface DAO<U, V> {
 	 * </p>
 	 *
 	 * <p>
-	 * Objects which could not be successfully deleted for privacy or security
-	 * reasons will not be returned in the return list.
+	 * Objects which could not be successfully deleted for privacy or security reasons will not be returned in the return list.
 	 * </p>
 	 *
 	 * @param ids
@@ -202,14 +189,12 @@ public interface DAO<U, V> {
 
 	/**
 	 * <p>
-	 * Patch the object by updating only the non-null fields in the given object
-	 * (because the caller may only have limited knowledge of the object and
-	 * therefore can't entirely replace the object).
+	 * Patch the object by updating only the non-null fields in the given object (because the caller may only have limited knowledge
+	 * of the object and therefore can't entirely replace the object).
 	 * </p>
 	 *
 	 * @param object
-	 *            The object to be patched, must include the id which is used to
-	 *            find the object in the store
+	 *            The object to be patched, must include the id which is used to find the object in the store
 	 * @return The object as patched
 	 * @throws DataNotFoundException
 	 *             If the object to be patched does not exist in the data store
@@ -220,8 +205,17 @@ public interface DAO<U, V> {
 	 * @throws DataOperationNotSupportedException
 	 *             If this operation is not supported
 	 */
-	public U patch(U object) throws DataNotFoundException, DataSecurityException, DataPrivacyException,
-			DataOperationNotSupportedException;
+	public U patch(U object)
+			throws DataNotFoundException, DataSecurityException, DataPrivacyException, DataOperationNotSupportedException;
 
+	/**
+	 * <p>
+	 * Patch all the objects in the input list
+	 * </p>
+	 *
+	 * @param objects
+	 *            List of objects to be patched
+	 * @return List of updated objects
+	 */
 	public List<U> patchAll(List<U> objects);
 }

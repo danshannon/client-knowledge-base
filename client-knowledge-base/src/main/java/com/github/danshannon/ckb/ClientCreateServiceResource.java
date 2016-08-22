@@ -12,19 +12,37 @@ import com.github.danshannon.ckb.data.DAO;
 import com.github.danshannon.ckb.data.mapdb.DataDuplicateException;
 import com.github.danshannon.ckb.model.Client;
 
+/**
+ *
+ *
+ * @author Dan Shannon
+ *
+ */
 @Path("/client")
 @Produces(MediaType.APPLICATION_JSON)
 public class ClientCreateServiceResource {
 	private DAO<Client, Long> dao;
 
+	/**
+	 * @return The Client DAO
+	 */
 	public DAO<Client, Long> getDao() {
 		return this.dao;
 	}
 
+	/**
+	 * @param dao
+	 *            The Client DAO
+	 */
 	public void setDao(final DAO<Client, Long> dao) {
 		this.dao = dao;
 	}
 
+	/**
+	 * @param client
+	 *            The client to create
+	 * @return The Client created, will include the id
+	 */
 	@POST
 	@Timed
 	public Client postClient(final Client client) {

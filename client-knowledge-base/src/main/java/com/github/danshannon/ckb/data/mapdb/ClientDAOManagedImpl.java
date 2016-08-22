@@ -1,5 +1,6 @@
 package com.github.danshannon.ckb.data.mapdb;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,13 +14,13 @@ import com.github.danshannon.ckb.model.Client;
 import io.dropwizard.lifecycle.Managed;
 
 /**
- * @author DShannon
+ * @author Dan Shannon
  *
  */
 public class ClientDAOManagedImpl implements ClientDAO, Managed {
-	private DB database;
-	private Map<Long, Client> clients;
-	private Map<String, Long> ids;
+	private DB					database;
+	private Map<Long, Client>	clients;
+	private Map<String, Long>	ids;
 
 	public void start() throws Exception {
 		this.database = DBMaker.fileDB("client.db").make();
@@ -69,8 +70,7 @@ public class ClientDAOManagedImpl implements ClientDAO, Managed {
 	}
 
 	public List<Client> getAll() throws DataOperationNotSupportedException {
-		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<Client>(this.clients.values());
 	}
 
 	public List<Client> getPage(Integer page, Integer pageSize)
@@ -80,8 +80,12 @@ public class ClientDAOManagedImpl implements ClientDAO, Managed {
 	}
 
 	public List<Client> createAll(List<Client> objects) {
-		// TODO Auto-generated method stub
-		return null;
+		final List<Client> clients = new ArrayList<Client>();
+		for (final Client client : objects) {
+			final Client newClient = this.create(client);
+			clients.add(newClient);
+		}
+		return clients;
 	}
 
 	public Client update(Client object) throws DataNotFoundException {
@@ -105,12 +109,11 @@ public class ClientDAOManagedImpl implements ClientDAO, Managed {
 	}
 
 	public void deleteAll() throws DataOperationNotSupportedException {
-		// TODO Auto-generated method stub
-
+		throw new DataOperationNotSupportedException("This operation is not supported");
 	}
 
-	public Client patch(Client object) throws DataNotFoundException, DataSecurityException, DataPrivacyException,
-			DataOperationNotSupportedException {
+	public Client patch(Client object)
+			throws DataNotFoundException, DataSecurityException, DataPrivacyException, DataOperationNotSupportedException {
 		// TODO Auto-generated method stub
 		return null;
 	}
